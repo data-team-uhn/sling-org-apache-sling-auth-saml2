@@ -508,7 +508,7 @@ public class AuthenticationHandlerSAML2Impl extends AbstractSamlHandler implemen
         for (XMLObject attributeValue : attribute.getAttributeValues()) {
             if (attributeValue instanceof AttributeValue) {
                 if ( ((AttributeValue) attributeValue).getTextContent() != null ) {
-                    saml2User.setId( ((AttributeValue) attributeValue).getValue());
+                    saml2User.setId( ((AttributeValue) attributeValue).getTextContent());
                     logger.debug("username value: {}", saml2User.getId());
                 }
             }
