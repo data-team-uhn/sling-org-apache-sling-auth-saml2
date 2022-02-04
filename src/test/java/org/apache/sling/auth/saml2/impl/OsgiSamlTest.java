@@ -228,7 +228,7 @@ public class OsgiSamlTest {
     public void test_buildNameIdPolicy(){
         NameIDPolicy nameIDPolicy = samlHandler.buildNameIdPolicy();
         assertTrue(nameIDPolicy.getAllowCreate());
-        assertEquals("urn:oasis:names:tc:SAML:2.0:nameid-format:transient", nameIDPolicy.getFormat());
+        assertEquals("urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified", nameIDPolicy.getFormat());
     }
 
     @Test

@@ -50,6 +50,7 @@ import org.opensaml.saml.saml2.binding.decoding.impl.HTTPPostDecoder;
 import org.opensaml.saml.saml2.binding.encoding.impl.HTTPRedirectDeflateEncoder;
 import org.opensaml.saml.saml2.core.Assertion;
 import org.opensaml.saml.saml2.core.Attribute;
+import org.opensaml.saml.saml2.core.AttributeValue;
 import org.opensaml.saml.saml2.core.AuthnRequest;
 import org.opensaml.saml.saml2.core.EncryptedAssertion;
 import org.opensaml.saml.saml2.core.Issuer;
@@ -407,7 +408,7 @@ public class AuthenticationHandlerSAML2Impl extends AbstractSamlHandler implemen
     NameIDPolicy buildNameIdPolicy() {
         NameIDPolicy nameIDPolicy = Helpers.buildSAMLObject(NameIDPolicy.class);
         nameIDPolicy.setAllowCreate(true);
-        nameIDPolicy.setFormat(NameIDType.TRANSIENT);
+        nameIDPolicy.setFormat(NameIDType.UNSPECIFIED);
         return nameIDPolicy;
     }
 
@@ -505,9 +506,17 @@ public class AuthenticationHandlerSAML2Impl extends AbstractSamlHandler implemen
     private void setUserId(Attribute attribute, Saml2User saml2User) {
         logger.debug("username attr name: {}", attribute.getName());
         for (XMLObject attributeValue : attribute.getAttributeValues()) {
-            if ( ((XSString) attributeValue).getValue() != null ) {
-                saml2User.setId( ((XSString) attributeValue).getValue());
-                logger.debug("username value: {}", saml2User.getId());
+            if (attributeValue instanceof AttributeValue) {
+                if ( ((AttributeValue) attributeValue).getTextContent() != null ) {
+                    saml2User.setId( ((AttributeValue) attributeValue).getValue());
+                    logger.debug("username value: {}", saml2User.getId());
+                }
+            }
+            if (attributeValue instanceof XSString) {
+                if ( ((XSString) attributeValue).getValue() != null ) {
+                    saml2User.setId( ((XSString) attributeValue).getValue());
+                    logger.debug("username value: {}", saml2User.getId());
+                }
             }
         }
     }
