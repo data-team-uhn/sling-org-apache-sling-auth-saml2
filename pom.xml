@@ -19,6 +19,7 @@
 
   <modelVersion>4.0.0</modelVersion>
 
+  <groupId>io.uhndata.cards</groupId>
   <artifactId>org.apache.sling.auth.saml2</artifactId>
   <name>SAML2 Service Provider</name>
   <version>0.2.7-SNAPSHOT</version>
@@ -46,9 +47,9 @@ which is licensed under the Apache-2.0 license.
   </properties>
 
   <scm>
-    <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-auth-saml2.git</connection>
-    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-auth-saml2.git</developerConnection>
-    <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-auth-saml2.git</url>
+    <connection>scm:git:git://github.com/data-team-uhn/sling-org-apache-sling-auth-saml2.git</connection>
+    <developerConnection>scm:git:git@github.com:data-team-uhn/sling-org-apache-sling-auth-saml2.git</developerConnection>
+    <url>https://github.com/data-team-uhn/sling-org-apache-sling-auth-saml2/tree/master/</url>
     <tag>HEAD</tag>
  </scm>
 
@@ -173,7 +174,21 @@ which is licensed under the Apache-2.0 license.
           </keysMapLocations>
         </configuration>
       </plugin>
-    </plugins> 
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.sonatype.plugins</groupId>
+          <artifactId>nexus-staging-maven-plugin</artifactId>
+          <version>1.6.7</version>
+          <extensions>true</extensions>
+          <configuration>
+            <serverId>ossrh</serverId>
+            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 
   <dependencies>
