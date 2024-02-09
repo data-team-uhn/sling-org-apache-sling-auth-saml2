@@ -22,7 +22,7 @@
   <groupId>io.uhndata.cards</groupId>
   <artifactId>org.apache.sling.auth.saml2</artifactId>
   <name>SAML2 Service Provider</name>
-  <version>0.2.6.cards.2</version>
+  <version>0.2.7-SNAPSHOT</version>
   <description>A SAML2 Web-profile SSO Service Provider (Sling Authentication) that uses encrypted
     POST Binding for communicating security assertions from an identity provider such as Shibboleth.</description>
 
@@ -50,7 +50,7 @@ which is licensed under the Apache-2.0 license.
     <connection>scm:git:git://github.com/data-team-uhn/sling-org-apache-sling-auth-saml2.git</connection>
     <developerConnection>scm:git:git@github.com:data-team-uhn/sling-org-apache-sling-auth-saml2.git</developerConnection>
     <url>https://github.com/data-team-uhn/sling-org-apache-sling-auth-saml2/tree/master/</url>
-    <tag>org.apache.sling.auth.saml2-0.2.6.cards.2</tag>
+    <tag>HEAD</tag>
  </scm>
 
   <build>
